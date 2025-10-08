@@ -22,6 +22,8 @@
   (let [byte- (aget ba (quot pos 8))]
     (not= 0 (bit-and byte- (bit-shift-left 1 (mod pos 8))))))
 
+(defn inc-if [c v] (if c (inc v) v))
+
 (comment
   (set-bit (byte-array 3) 15)
   (def b (set-bit (byte-array 5) 15))
