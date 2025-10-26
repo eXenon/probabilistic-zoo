@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+.error {
+    @apply bg-red-100;
+}
+
+

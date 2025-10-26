@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link href="public/app.css" rel="stylesheet">
+  </head>
+  <body>
+    <script src="public/math.js" rel="stylesheet"></script>
+    <script src="public/main.js" type="text/javascript"></script>
+    <div class="m-auto w-2/3 mt-10">
+      <h1 class="text-center text-4xl font-extralight">Probabilistic Zoo</h1>
+      <div class="w-full flex flex-row flex-wrap">
+        <input id="tab-bloom" type="radio" name="tabs" class="peer/tab-bloom opacity-0 absolute" checked>
+        <label for="tab-bloom" class="hover:underline peer-checked/tab-bloom:underline peer-checked/tab-bloom:decoration-blue-300 cursor-default p-4 rounded-t-lg block cursor-pointer">
+          Bloom Filter
+        </label>
+        <input id="tab-cmsketch" type="radio" name="tabs" class="peer/tab-cmsketch opacity-0 absolute">
+        <label for="tab-cmsketch" class="hover:underline peer-checked/tab-cmsketch:underline peer-checked/tab-cmsketch:decoration-blue-300 cursor-default p-4 rounded-t-lg block cursor-pointer">
+          Count-Min Sketch
+        </label>
+        <div class="basis-full h-0"></div>
+        <div class="hidden peer-checked/tab-bloom:block p-4 w-full">
+          <div class="flex flex-col">
+            <div class="font-light mb-2">
+              A
+              <a href="https://en.wikipedia.org/wiki/Bloom_filter" class="text-underline text-blue-300">bloom filter</a>
+              is a space-efficient probabilistic data structure that tests whether an element is a member of a set, with possible false positives but no false negatives. It's commonly used for quick membership checks in applications where memory efficiency is critical.
+            </div>
+            <div class="grid grid-cols-3 grid-rows-4 gap-4" style="grid-template-columns: min-content min-content auto">
+              <div class="font-bold py-1">n&nbsp;=</div>
+              <div>
+                <input value="1M" class="p-1 border rounded border-slate-800" oninput="pbs_ui.core.refresh_p()" id="bloom-n">
+              </div>
+              <div class="py-1">Number of items in the filter (supports
+                <a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes" class="underline">SI prefixes</a>: k, M, G, T, P, E, Z, Y, R, Q)</div>
+              <div class="font-bold py-1">m&nbsp;=</div>
+              <div>
+                <input value="1MiB" class="p-1 border rounded border-slate-800" oninput="pbs_ui.core.refresh_p()" id="bloom-m">
+              </div>
+              <div class="py-1">Number of bits in the filter (supports
+                <a href="https://en.wikipedia.org/wiki/Binary_prefix" class="underline">binary prefixes</a>: KiB, MiB, GiB, TiB, EiB)</div>
+              <div class="font-bold py-1">k&nbsp;=</div>
+              <div>
+                <input value="3" class="p-1 border rounded border-slate-800" oninput="pbs_ui.core.refresh_p()" id="bloom-k">
+              </div>
+              <div class="py-1">Number of hash functions</div>
+              <div class="font-bold">p&nbsp;=</div>
+              <div>
+                <input value="" class="p-1 rounded border-slate-800 font-black" oninput="" id="bloom-p" disabled>
+              </div>
+              <div class="py-1">Probability of false positive<br>1 in
+                <span class="font-weight" id="bloom-p-human">100</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="hidden peer-checked/tab-cmsketch:block p-4 w-full">
+          <div class="flex flex-col">
+            <div class="font-light mb-2">
+              A
+              <a href="https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch" class="text-underline text-blue-300">count-min sketch</a>
+              is a probabilistic data structure that serves as a frequency table of events in a stream of data, using sub-linear space, but at the expense of over-counting some events.
+            </div>
+            <div class="grid grid-cols-3 grid-rows-4 gap-4" style="grid-template-columns: min-content min-content auto">
+              <div class="font-bold py-1">w&nbsp;=</div>
+              <div>
+                <input value="1000" class="p-1 border rounded border-slate-800" oninput="pbs_ui.core.refresh_cms()" id="cms-w">
+              </div>
+              <div class="py-1">Width of the sketch (supports
+                <a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes" class="underline">SI prefixes</a>: k, M, G, T, P, E, Z, Y, R, Q)</div>
+              <div class="font-bold py-1">d&nbsp;=</div>
+              <div>
+                <input value="1000" class="p-1 border rounded border-slate-800" oninput="pbs_ui.core.refresh_cms()" id="cms-d">
+              </div>
+              <div class="py-1">Depth of the sketch (supports
+                <a href="https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes" class="underline">SI prefixes</a>: k, M, G, T, P, E, Z, Y, R, Q)</div>
+              <div></div>
+              <div></div>
+              <div>
+                Total size of the sketch will be
+                <span id="cms-size">1M</span>
+              </div>
+              <div class="font-bold py-1">ε&nbsp;=</div>
+              <div>
+                <input value="" class="p-1 rounded border-slate-800 font-black" id="cms-e" disabled>
+              </div>
+              <div class="py-1">Error factor - the sketch will return answer below ε*[number of elements] with probability 1 - δ</div>
+              <div class="font-bold">δ&nbsp;=</div>
+              <div>
+                <input value="" class="p-1 rounded border-slate-800 font-black" id="cms-delta" disabled>
+              </div>
+              <div class="py-1">Probability of being below the threshold<br>1 in
+                <span class="font-weight" id="cms-d-human">100</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

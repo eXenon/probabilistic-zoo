@@ -1,4 +1,6 @@
-{:deps {org.clj-commons/digest {:mvn/version "1.4.100"}}
+{:deps
+ {org.clj-commons/digest {:mvn/version "1.4.100"}
+  org.clojure/clojurescript {:mvn/version "1.12.42"}}
  :aliases
  {:repl/conjure
   {:extra-deps {nrepl/nrepl       {:mvn/version "1.0.0"}

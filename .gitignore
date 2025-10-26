@@ -2,3 +2,4 @@
 .cpcache/
 .clj-kondo/
 .nrepl-port
+out/
